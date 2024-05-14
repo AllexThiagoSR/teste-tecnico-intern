@@ -41,6 +41,13 @@ const countAliveNeighbours = (x, y) => {
   return counter;
 }
 
+const updatePixel = (x, y) => {
+  const neighboursQuantity = countAliveNeighbours(x, y);
+  if (neighboursQuantity > deathFromSuperpopulation || neighboursQuantity < deathFromLonelyness) return false;
+  if (!grid[x][y] && neighboursQuantity === 3) return true;
+  return grid[x][y];
+}
+
 const initGrid = (width, height) => {
   const arr = [];
   for (let x = 0; x < width; x += 1) {
