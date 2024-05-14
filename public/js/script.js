@@ -1,27 +1,28 @@
-const table = document.getElementById('game');
-const button = document.getElementById('init');
+const game = document.getElementById('game');
+const canva =  game.getContext('2d');
+game.height = 720;
+game.width = 1280;
+const width = game.width;
+const height = game.height;
+const pixelSize = 10;
+const deathFromSuperpopulation = 4;
+const deathFromLonelyness = 3;
+let grid = [];
+let tmpGrid = [];
 
-const createGridWithSomeCellsAlive = (length) => {
-  const grid = [];
-  for (let x = 0; x < length; x += 1) {
-    grid.push([]);
-    const tr = document.createElement('tr');
-    for(let y = 0; y < length; y += 1) {
-      const td = document.createElement('td');
-      td.id = `${x}-${y}`
-      grid[x].push({ x, y, alive: false, element: td });
-      const randomNumber = Math.floor(Math.random() * 100);
-      if (randomNumber > 50) {
-        grid[x][y].alive = true;
-        grid[x][y].element.className = 'alive'
-      }
-      tr.appendChild(grid[x][y].element);
-    }
-    table.appendChild(tr);
+const fillPixel = (x, y, color, size) => {
+  canva.fillStyle = color;
+  canva.fillRect(x, y, size, size)
+}
+
+const cellExists = (x, y) => {
+  try {
+    return grid[x][y];
+  } catch (error) {
+    return false;
   }
-  return grid;
-};
+}
 
-const grid = createGridWithSomeCellsAlive(25);
+const init = () => {}
 
-window.onload = () => {}
+init();
