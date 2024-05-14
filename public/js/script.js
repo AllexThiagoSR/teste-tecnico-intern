@@ -23,6 +23,20 @@ const cellExists = (x, y) => {
   }
 }
 
-const init = () => {}
+const initGrid = (width, height) => {
+  const arr = [];
+  for (let x = 0; x < width; x += 1) {
+    arr.push([]);
+    for (let y = 0; y < height; y += 1) {
+      arr[x].push(false)
+    }
+  }
+  return arr;
+}
+
+const init = () => {
+  grid = initGrid(width / pixelSize, height / pixelSize);
+  tmpGrid = initGrid(width / pixelSize, height / pixelSize);
+}
 
 init();
