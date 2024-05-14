@@ -65,8 +65,9 @@ const updateCanva = () => {
       }
     }
   }
-  if ((width / pixelSize) * (height / pixelSize) / counter > 96) init();
-  setTimeout(() => { requestAnimationFrame(updateCanva); }, 50);
+  const deathPercentage = (width / pixelSize) * (height / pixelSize) / counter
+  if ( deathPercentage > 98) init();
+  setTimeout(() => { requestAnimationFrame(updateCanva); }, 100);
 }
 
 const initGrid = (width, height) => {
@@ -88,6 +89,7 @@ const init = () => {
       if (Math.random() > 0.5) grid[x][y] = true;
     }
   }
+  updateCanva();
 }
 
 init();
