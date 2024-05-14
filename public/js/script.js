@@ -48,6 +48,27 @@ const updatePixel = (x, y) => {
   return grid[x][y];
 }
 
+const updateCanva = () => {
+  canva.clearRect(0, 0, width, height);
+  for (let x = 0; x < width / pixelSize; x += 1) {
+    for (let y = 0; y < height / pixelSize; y += 1) {
+      tmpGrid[x][y] = updatePixel(x, y);
+    }
+  }
+  grid = tmpGrid;
+  let counter = 0;
+  for (let x = 0; x < width / pixelSize; x += 1) {
+    for (let y = 0; y < height / pixelSize; y += 1) {
+      if (grid[x][y]) {
+        fillPixel(x*pixelSize, y*pixelSize, "black", pixelSize);
+        counter += 1;
+      }
+    }
+  }
+  if ((width / pixelSize) * (height / pixelSize) / counter > 96) init();
+  setTimeout(() => { requestAnimationFrame(updateCanva); }, 50);
+}
+
 const initGrid = (width, height) => {
   const arr = [];
   for (let x = 0; x < width; x += 1) {
