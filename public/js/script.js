@@ -70,25 +70,20 @@ const updateCanva = () => {
   setTimeout(() => { requestAnimationFrame(updateCanva); }, 100);
 }
 
-const initGrid = (width, height) => {
+const initGridWithSomeAliveCells = (width, height) => {
   const arr = [];
   for (let x = 0; x < width; x += 1) {
     arr.push([]);
     for (let y = 0; y < height; y += 1) {
-      arr[x].push(false)
+      arr[x].push(Math.random() > 0.5)
     }
   }
   return arr;
 }
 
 const init = () => {
-  grid = initGrid(width / pixelSize, height / pixelSize);
-  tmpGrid = initGrid(width / pixelSize, height / pixelSize);
-  for (let x = 0; x < width / pixelSize; x += 1) {
-    for (let y = 0; y < height / pixelSize; y += 1) {
-      if (Math.random() > 0.5) grid[x][y] = true;
-    }
-  }
+  grid = initGridWithSomeAliveCells(width / pixelSize, height / pixelSize);
+  tmpGrid = grid;
   updateCanva();
 }
 
