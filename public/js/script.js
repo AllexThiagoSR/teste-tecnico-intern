@@ -37,6 +37,11 @@ const initGrid = (width, height) => {
 const init = () => {
   grid = initGrid(width / pixelSize, height / pixelSize);
   tmpGrid = initGrid(width / pixelSize, height / pixelSize);
+  for (let x = 0; x < width / pixelSize; x += 1) {
+    for (let y = 0; y < height / pixelSize; y += 1) {
+      if (Math.random() > 0.5) grid[x][y] = true;
+    }
+  }
 }
 
 init();
