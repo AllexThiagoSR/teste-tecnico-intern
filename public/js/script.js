@@ -23,6 +23,24 @@ const cellExists = (x, y) => {
   }
 }
 
+const countAliveNeighbours = (x, y) => {
+  let counter = 0;
+  const neighbours = [
+    { x: x -1, y },
+    { x: x + 1, y },
+    { x, y: y - 1 },
+    { x, y: y + 1 },
+    { x: x -1, y: y - 1 },
+    { x: x - 1, y: y + 1 },
+    { x: x + 1, y: y - 1 },
+    { x: x + 1, y: y + 1 },
+  ];
+  for (const coordinate of neighbours) {
+    if (cellExists(coordinate.x, coordinate.y)) counter += 1;
+  }
+  return counter;
+}
+
 const initGrid = (width, height) => {
   const arr = [];
   for (let x = 0; x < width; x += 1) {
