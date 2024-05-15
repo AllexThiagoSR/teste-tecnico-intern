@@ -29,6 +29,8 @@
   $ git clone https://github.com/AllexThiagoSR/teste-tecnico-intern
   ```
 
+  Entrar na pasta criada pela clonagem
+
   Mudar para a branch estagio/allex-thiago-santos-rosa se não estiver nela ainda
 
   ```bash
