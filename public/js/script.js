@@ -5,10 +5,9 @@ game.width = 1280;
 const width = game.width;
 const height = game.height;
 const pixelSize = 10;
-const deathFromSuperpopulation = 4;
-const deathFromLonelyness = 3;
+const deathFromSuperpopulation = 3;
+const deathFromLonelyness = 2;
 let grid = [];
-let tmpGrid = [];
 
 const fillPixel = (x, y, color, size) => {
   canva.fillStyle = color;
@@ -43,22 +42,23 @@ const countAliveNeighbours = (x, y) => {
 
 const updatePixel = (x, y) => {
   const neighboursQuantity = countAliveNeighbours(x, y);
-  if (neighboursQuantity > deathFromSuperpopulation || neighboursQuantity < deathFromLonelyness) return false;
+  if (grid[x][y] && (neighboursQuantity > deathFromSuperpopulation || neighboursQuantity < deathFromLonelyness)) return false;
   if (!grid[x][y] && neighboursQuantity === 3) return true;
   return grid[x][y];
 }
 
 const updateCanva = () => {
   canva.clearRect(0, 0, width, height);
-  for (let x = 0; x < width / pixelSize; x += 1) {
-    for (let y = 0; y < height / pixelSize; y += 1) {
+  const tmpGrid = grid.map(a => [...a]);
+  for (let x = 0; x < tmpGrid.length; x += 1) {
+    for (let y = 0; y < tmpGrid[x].length; y += 1) {
       tmpGrid[x][y] = updatePixel(x, y);
     }
   }
   grid = tmpGrid;
   let counter = 0;
-  for (let x = 0; x < width / pixelSize; x += 1) {
-    for (let y = 0; y < height / pixelSize; y += 1) {
+  for (let x = 0; x < grid.length; x += 1) {
+    for (let y = 0; y < grid[x].length; y += 1) {
       if (grid[x][y]) {
         fillPixel(x*pixelSize, y*pixelSize, "black", pixelSize);
         counter += 1;
@@ -67,7 +67,7 @@ const updateCanva = () => {
   }
   const deathPercentage = (width / pixelSize) * (height / pixelSize) / counter
   if ( deathPercentage > 98) init();
-  setTimeout(() => { requestAnimationFrame(updateCanva); }, 100);
+  setTimeout(() => { requestAnimationFrame(updateCanva); }, 40);
 }
 
 const initGridWithSomeAliveCells = (width, height) => {
@@ -83,7 +83,6 @@ const initGridWithSomeAliveCells = (width, height) => {
 
 const init = () => {
   grid = initGridWithSomeAliveCells(width / pixelSize, height / pixelSize);
-  tmpGrid = grid;
   updateCanva();
 }
 
