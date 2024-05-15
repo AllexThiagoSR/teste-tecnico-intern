@@ -65,8 +65,7 @@ const updateCanva = () => {
       }
     }
   }
-  const deathPercentage = (width / pixelSize) * (height / pixelSize) / counter
-  if ( deathPercentage > 98) init();
+  
   setTimeout(() => { requestAnimationFrame(updateCanva); }, 40);
 }
 
