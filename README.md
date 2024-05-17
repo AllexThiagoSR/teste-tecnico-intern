@@ -1,46 +1,58 @@
-# teste-tecnico-intern
+# Desafio Técnico - Estágio
 
+## Candidato
+  *Nome:* Allex Thiago Santos Rosa
+  <br/>
+  *Linkedin:* https://www.linkedin.com/in/allexthiagosantosrosa/
+  <br/>
+  *GitHub:* https://github.com/AllexThiagoSR/
+  <br/>
+  *Telefone(WhatsApp):* (99) 99127-3808
+  <br/>
+  *Email:* allexthiagodev@gmail.com
 
+## Tecnologias Utilizadas
+  - HTML
+  - CSS
+  - JavaScript
 
-Para o desafio é esperado que o participante implemente sua versão do game of life, recomendamos o uso de html, javascript e css, porém pode ser utilizado qualquer linguagem/framework.
+## O que é preciso para rodar a aplicação localmente?
 
-## Regras do teste técnico
+  - Git
+  - Node
 
-- A implementação deve ser entregue em até 72 horas, iniciando a contagem assim que o participante receber o acesso ao repositório, o tempo da entrega não irá contar como fator determinante, então preze pela qualidade. 
-- Ao finalizar a implementação o participante deve enviar um PR(pull request) com o seguinte padrão, vaga/primeiro-nome-e-sobrenome, exemplo: estagio/john. aplique no PR a formatação que desejar.
-- O projeto deve ter um README.md com as instruções para rodar o projeto, essa etapa é fundamental para que o revisor consiga verificar o funcionamento do projeto, então preste bastante atenção aqui.
-- Implemente testes.
-- É permitido fazer melhorias, desde que as regras básicas do jogo continuem vigentes. 
+## Como rodar a aplicação localmente?
 
-### Introdução ao Game of Life
+  Clonar esse repositório na sua máquina
 
-![image](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
+  ```bash
+  $ git clone https://github.com/AllexThiagoSR/teste-tecnico-intern
+  ```
 
-O Game of Life não é um jogo no sentido tradicional; é uma simulação de células que seguem regras simples, mas que produzem comportamentos complexos. Criado por John Conway em 1970, esse "jogo" despertou o interesse de cientistas, matemáticos e entusiastas da computação ao longo das décadas.
+  Entrar na pasta criada pela clonagem
 
-### As Regras Básicas
-![[Gospers_glider_gun (1).gif]]
+  Mudar para a branch estagio/allex-thiago-santos-rosa se não estiver nela ainda
 
-No Game of Life, temos um grid bidimensional de células, cada uma podendo estar viva ou morta. As células interagem de acordo com três regras simples:
+  ```bash
+  $ git checkout estagio/allex-thiago-santos-rosa
+  ```
 
-1. **Sobrevivência:** Uma célula viva com dois ou três vizinhos vivos continua viva na próxima geração.
-2. **Morte por solidão:** Uma célula viva com menos de dois vizinhos vivos morre de solidão na próxima geração.
-3. **Morte por superpopulação:** Uma célula viva com mais de três vizinhos vivos morre de superpopulação na próxima geração.
-4. **Nascimento:** Uma célula morta com exatamente três vizinhos vivos se torna viva na próxima geração.
+  Instalar as dependências do app
 
+  ```bash
+  $ npm install
+  ```
 
-Dado um celular na posição x, y, seus vizinhos são:
+  Rodar a aplicação
+  ```bash
+  $ npm run start
+  ```
 
-- (x-1, y): Move uma unidade para a esquerda.
-- (x+1, y): Move uma unidade para a direita.
-- (x, y-1): Move uma unidade para baixo.
-- (x, y+1): Move uma unidade para cima.
-- (x-1, y-1): Move uma unidade para a diagonal inferior esquerda.
-- (x-1, y+1): Move uma unidade para a diagonal superior esquerda.
-- (x+1, y-1): Move uma unidade para a diagonal inferior direita.
-- (x-1, y+1): Move uma unidade para a diagonal superior direita.
+  ou
 
-Essas regras simples são aplicadas a cada célula no grid para determinar o estado das células na próxima geração.
+  Rodar a aplicação como desenvolvimento para ser mais fácil de mudar coisas no código para testar
+  ```bash
+  $ npm run dev
+  ```
 
-
-![image](https://upload.wikimedia.org/wikipedia/commons/7/7e/GameOfLife_Glider_Animation.gif)
+  Pronto! Agora a aplicação está rodando na porta 3000 do localhost, basta acessar http://localhost:3000 no seu navegador
